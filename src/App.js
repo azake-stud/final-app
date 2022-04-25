@@ -1,10 +1,11 @@
-import logo from './logo.svg';
+import './index.css';
 import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <h1>Welcome to My Final Project</h1>
+    <div className="container">
+      <h1 className='title'>Search Movies</h1>
+      <input placeholder='Movie name' className='search-item' type="" />
     </div>
   );
 }
