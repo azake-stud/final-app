@@ -1,32 +1,35 @@
-import {useState, useEffect} from 'react';
+import { useEffect, useState } from "react";
 
 //keywords
-const API_LINK = "http://www.omdbapi.com/?apikey=c2aa0bb2";
+const API_ENPOINT = "http://www.omdbapi.com/?apikey=c2aa0bb2";
 
-export const useFetch = (keyword)=>{
-    const [movies, setMovies] = useState([]);
-    const [errorMsg, setErrorMsg] = useState("");
+export const useFetch = (keyword) => {
+  const [movies, setMovies] = useState([]);
+  const [totalCount, setTotalCount] = useState(0);
 
-    const fetchMovies = async (keyword) => {
-        try {
-          let response = await fetch(`${API_LINK}${keyword}`);
-          let data = await response.json();
-          if (data?.Response === "True" || data) {
-            setMovies(data?.Search);
-            setErrorMsg("");
-          } else {
-            setErrorMsg(data?.Error);
-          }
-        } catch (error) {
-          setErrorMsg(error?.message);
-        }
-      };
+  const [errorMsg, setErrorMsg] = useState("");
 
-    useEffect(()=>{
-        if(keyword !== ''){
-            fetchMovies(keyword);
-        }
-    }, [keyword]);
+  const fetchMovies = async (keyword) => {
+    try {
+      let response = await fetch(`${API_ENPOINT}${keyword}`);
+      let data = await response.json();
+      if (data?.Response === "True") {
+        setMovies(data?.Search || data);
+        setTotalCount(data?.totalResults || 0);
+        setErrorMsg("");
+      } else {
+        setErrorMsg(data?.Error);
+      }
+    } catch (error) {
+      setErrorMsg(error?.message);
+    }
+  };
 
-    return{movies, errorMsg};
+  useEffect(() => {
+    if (keyword !== "") {
+      fetchMovies(keyword);
+    }
+  }, [keyword]);
+
+  return { movies, errorMsg, totalCount };
 };
