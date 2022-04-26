@@ -1,3 +1,35 @@
+import { useState } from "react";
+import { useFetch } from "../hooks/useFetch";
+
 export const HomePage =() =>{
-    return <p>Home Page</p>
-}
+    const [keyword, setKeyword]= useState('');
+    let {movies, errorMsg} = useFetch(keyword);
+
+    return(
+        <div className="container">
+            <h1 className="title">Hollywood Movies of All Time</h1>
+            <input
+                onChange={(e) => setKeyword(e.target.value)}
+                value={keyword}
+                placeholder="Search movies"
+                className="search-input"
+            />
+            {!!errorMsg && <p className="error-msg">{errorMsg}</p>}
+            <div className="content">
+                {movies?.map((movie) => (
+                 <a
+                 href={`http://localhost:3002/movies/${movie?.imdbID}`}
+                 className="movie"
+                 >
+            <img className="movie-img" src={movie?.Poster} />
+            <div className="movie-detail">
+              <h3 className="movie-name">{movie?.Title}</h3>
+              <p className="movie-year">{movie?.Year}</p>
+            </div>
+          </a>
+        ))}
+        </div>
+        </div>
+    ); //return closing
+
+}; //HomePage closing

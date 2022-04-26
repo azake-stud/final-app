@@ -5,15 +5,22 @@ const API_LINK = "http://www.omdbapi.com/?apikey=c2aa0bb2";
 
 export const useFetch = (keyword)=>{
     const [movies, setMovies] = useState([]);
+    const [errorMsg, setErrorMsg] = useState("");
 
-    const fetchMovies = async(keyword)=>{
-        let response = await fetch(`${API_LINK}&s=${keyword}`);
-        let data = await response.json();
-        console.log(data);
-        if(data?.Response === 'True'){
+    const fetchMovies = async (keyword) => {
+        try {
+          let response = await fetch(`${API_LINK}&s=${keyword}`);
+          let data = await response.json();
+          if (data?.Response === "True") {
             setMovies(data?.Search);
+            setErrorMsg("");
+          } else {
+            setErrorMsg(data?.Error);
+          }
+        } catch (error) {
+          setErrorMsg(error?.message);
         }
-    };
+      };
 
     useEffect(()=>{
         if(keyword !== ''){
@@ -21,5 +28,5 @@ export const useFetch = (keyword)=>{
         }
     }, [keyword]);
 
-    return{movies};
+    return{movies, errorMsg};
 };

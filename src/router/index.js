@@ -8,7 +8,7 @@ export const Router = () => {
         <Route index element={<HomePage />} />
         <Route path="/page/:page" element={<HomePage />} />
         <Route path="/movies/:id" element={<MoviePage />} />
-        <Route path="*" element={<p>Page Not found</p>} />
+        <Route path="*" element={<p>Page Not found 404 </p>} />
       </Routes>
     </BrowserRouter>
   );

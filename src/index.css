@@ -5,9 +5,12 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #f1f5f8;
+  /* background-color: #589ed3; */
+  background-image: url('https://s.studiobinder.com/wp-content/uploads/2021/07/What-is-the-Studio-System-%E2%80%94-Hollywood-s-Studio-Era-Explained-Featured.jpg');
+  background-size: 100%;
   color: #112942;
 }
+
 * {
   box-sizing: border-box;
   padding: 0;
@@ -19,15 +22,16 @@ body {
   padding: 60px 30px 30px 30px;
 }
 .title {
+  margin-top: -30px;
   color: #112942;
 }
 .search-input {
   width: 100%;
   max-width: 500px;
-  border: none;
+  border: 3px solid #112942;
   padding: 16px 10px;
   border-radius: 5px;
-  margin-top: 30px;
+  margin-top: 10px;
 }
 .error-msg {
   color: red;
