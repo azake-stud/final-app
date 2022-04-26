@@ -2,8 +2,11 @@ import { useState } from "react";
 import { useFetch } from "../hooks/useFetch";
 
 export const HomePage =() =>{
-    const [keyword, setKeyword]= useState('');
-    let {movies, errorMsg} = useFetch(`&s=${keyword}`);
+    const [keyword, setKeyword]= useState('lion');
+    // let {movies, errorMsg} = useFetch(`&s=${keyword}`);
+    let { movies, errorMsg } = useFetch(
+      keyword !== "" ? `&s=${keyword}` : ""
+    );
 
     return(
         <div className="container">
@@ -31,5 +34,4 @@ export const HomePage =() =>{
         </div>
         </div>
     ); //return closing
-
 }; //HomePage closing

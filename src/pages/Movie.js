@@ -8,6 +8,7 @@ export const MoviePage = () => {
   return (
     <div className="container">
       <div className="row">
+          <h1>99999999</h1>
         <img className="bg-img" src={movies?.Poster} />
         <div className="movie-data">
           <h1>{movies?.Title}</h1>
@@ -18,7 +19,6 @@ export const MoviePage = () => {
           </Link>
         </div>
       </div>
-
     </div>
   );
 };
