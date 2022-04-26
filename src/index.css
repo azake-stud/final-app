@@ -61,4 +61,6 @@ body {
 .movie-name {
   margin-bottom: 5px;
 }
-
+.movie:hover .movie-detail {
+  display: block;
+}
