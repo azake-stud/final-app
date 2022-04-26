@@ -9,9 +9,9 @@ export const useFetch = (keyword)=>{
 
     const fetchMovies = async (keyword) => {
         try {
-          let response = await fetch(`${API_LINK}&s=${keyword}`);
+          let response = await fetch(`${API_LINK}${keyword}`);
           let data = await response.json();
-          if (data?.Response === "True") {
+          if (data?.Response === "True" || data) {
             setMovies(data?.Search);
             setErrorMsg("");
           } else {

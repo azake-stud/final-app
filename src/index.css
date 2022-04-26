@@ -67,6 +67,29 @@ body {
 .movie-name {
   margin-bottom: 5px;
 }
+.movie-desc{
+  margin: 20px 0;
+  color: #fff;
+}
+.bold{
+  font-weight: bold;
+}
 .movie:hover .movie-detail {
   display: block;
 }
+.row{
+  display: flex;
+  flex-direction: row;
+}
+.bg-img{
+  margin-right: 20px;
+}
+.back-btn{
+  background-color: #48a6e8;
+  color: #fff;
+  margin-top: 20px;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+

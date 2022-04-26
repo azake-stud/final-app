@@ -3,7 +3,7 @@ import { useFetch } from "../hooks/useFetch";
 
 export const HomePage =() =>{
     const [keyword, setKeyword]= useState('');
-    let {movies, errorMsg} = useFetch(keyword);
+    let {movies, errorMsg} = useFetch(`&s=${keyword}`);
 
     return(
         <div className="container">
@@ -18,7 +18,7 @@ export const HomePage =() =>{
             <div className="content">
                 {movies?.map((movie) => (
                  <a
-                 href={`http://localhost:3002/movies/${movie?.imdbID}`}
+                 href={`http://localhost:3000/movies/${movie?.imdbID}`}
                  className="movie"
                  >
             <img className="movie-img" src={movie?.Poster} />
