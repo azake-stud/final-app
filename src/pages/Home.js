@@ -3,7 +3,7 @@ import { useFetch } from "../hooks/useFetch";
 
 export const HomePage =() =>{
     document.body.style.backgroundImage = "url('https://s.studiobinder.com/wp-content/uploads/2021/07/What-is-the-Studio-System-%E2%80%94-Hollywood-s-Studio-Era-Explained-Featured.jpg')";
-    const [keyword, setKeyword]= useState('lion');
+    const [keyword, setKeyword]= useState('world');
     let { movies, errorMsg } = useFetch(
       keyword !== "" ? `&s=${keyword}` : ""
     );
